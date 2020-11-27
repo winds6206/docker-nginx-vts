@@ -20,7 +20,7 @@ RUN cd /opt \
   && cd /opt/rebuildnginx/nginx-${NGINX_VERSION} \
   && dpkg-buildpackage -b \
   && cd /opt/rebuildnginx \
-  && dpkg --install nginx_${NGINX_VERSION}-1~$(lsb_release -cs)_amd64.deb \
+  && dpkg --install nginx_${NGINX_VERSION}-2~$(lsb_release -cs)_amd64.deb \
   && apt-get remove --purge -y dpkg-dev curl && apt-get -y --purge autoremove && rm -rf /var/lib/apt/lists/*
 
 CMD ["nginx", "-g", "daemon off;"]
