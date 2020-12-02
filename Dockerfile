@@ -23,12 +23,10 @@ RUN cd /opt \
   # Build package
   && cd /opt/rebuildnginx/nginx-${NGINX_VERSION} \
   && dpkg-buildpackage -b \
-
   # Packages(.deb) files will be created at / location (not in the NGINX source directory)
-
   # Install package
   && cd /opt/rebuildnginx \
   && dpkg --install nginx_${NGINX_VERSION}-2~$(lsb_release -cs)_amd64.deb \
-  && apt-get remove --purge -y dpkg-dev curl && apt-get -y --purge autoremove && rm -rf /var/lib/apt/lists/*
+  && apt-get remove --purge -y dpkg-dev curl && apt-get -y --purge autoremove && rm -rf /var/lib/apt/lists/* && rm -rf /opt/*
 
 CMD ["nginx", "-g", "daemon off;"]
