@@ -29,4 +29,6 @@ RUN cd /opt \
   && dpkg --install nginx_${NGINX_VERSION}-2~$(lsb_release -cs)_amd64.deb \
   && apt-get remove --purge -y dpkg-dev curl && apt-get -y --purge autoremove && rm -rf /var/lib/apt/lists/* && rm -rf /opt/*
 
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+
 CMD ["nginx", "-g", "daemon off;"]
