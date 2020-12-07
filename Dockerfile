@@ -31,4 +31,7 @@ RUN cd /opt \
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 
+ARG TZ=Asia/Taipei
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 CMD ["nginx", "-g", "daemon off;"]
